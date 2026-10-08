@@ -1,7 +1,7 @@
 package ru.stqa.qeometry.figures;
 
 public record Rectangle(double a, double b){
-    
+
 
 
     public static void printRectangleArea(double a, double b) {
