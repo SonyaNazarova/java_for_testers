@@ -11,7 +11,7 @@ public class TriangleTests {
     }
 
     @Test
-    void canCalculateAreaTriangle(){
+    void canCalculateArea(){
         double result = Math.sqrt(Triangle.triangleArea(3,4,5));
         Assertions.assertEquals(6, result);
     }
