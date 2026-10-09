@@ -2,6 +2,13 @@ package ru.stqa.qeometry.figures;
 
 public record Rectangle(double a, double b){
 
+    public Rectangle{
+        if ( a < 0 || b < 0) {
+            throw new IllegalArgumentException("Сторона прямоугольника не может быть отрицательная");
+        }
+
+    }
+
 
 
     public static void printRectangleArea(double a, double b) {

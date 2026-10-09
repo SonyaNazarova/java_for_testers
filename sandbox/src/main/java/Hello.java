@@ -1,24 +1,15 @@
-import java.io.File;
-
 public class Hello {
     public static void main(String[] args) {
-        try {
-        int z = calculate();
-        System.out.println("Hello? world");
-
-
-    } catch (ArithmeticException exception){
-            exception.printStackTrace();
-        }
+            var x = 1;
+            var y = 0;
+            if (y == 0){
+                System.out.println("Деление на 0 запрещено");
+            } else {
+                var z = divide(x, y);
+                System.out.println("Hello! world");
+            }
 
 }
-
-    private static int calculate() {
-        var x = 1;
-        var y = 0;
-        int z = divide(x, y);
-        return z;
-    }
 
     private static int divide(int x, int y) {
         var z = x / y;

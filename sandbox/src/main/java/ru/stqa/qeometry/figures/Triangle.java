@@ -3,6 +3,17 @@ package ru.stqa.qeometry.figures;
 
  public record  Triangle (double a, double b, double c){
 
+     public Triangle{
+         if ( a < 0 || b < 0 || c < 0 ) {
+             throw new IllegalArgumentException("Сторона треугольника  не может быть отрицательная");
+         }
+
+         if ((a+b) < c || (a+c) < b || (b+c) < a){
+             throw new IllegalArgumentException("Cумма двух любых сторон треугольника должна быть не меньше третьей стороны");
+         }
+
+     }
+
      public static void printTrianglePerimeter(Triangle p) {
         var text = String.format("Периметр треугольника со сторонами %f , %f и %f = %f", p.a, p.b, p.c, p.Perimeter());
         System.out.println(text);
