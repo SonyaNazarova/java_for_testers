@@ -1,25 +1,25 @@
 package ru.stqa.qeometry.figures;
 
 
- public record Triangle(double a, double b, double c){
+ public record  Triangle (double a, double b, double c){
 
-            public static void printTrianglePerimeter(double a, double b, double c) {
-        var text = String.format("Периметр треугольника со сторонами %f , %f и %f = %f", a, b, c, trianglePerimeter(a,b,c));
+     public static void printTrianglePerimeter(Triangle p) {
+        var text = String.format("Периметр треугольника со сторонами %f , %f и %f = %f", p.a, p.b, p.c, p.Perimeter());
         System.out.println(text);
 
         }
-            public static double trianglePerimeter(double a, double b, double c) {
-                return a+b+c;
-            }
 
-            public static void printTriangleArea(double a, double b, double c) {
-                var text = String.format("Площадь треугольника со сторонами %f , %f и %f = %f", a, b, c, Math.sqrt(triangleArea(a,b,c)));
+            public static void printTriangleArea(Triangle a) {
+                var text = String.format("Площадь треугольника со сторонами %f , %f и %f = %f", a.a, a.b, a.c, Math.sqrt(a.Area()));
                 System.out.println(text);
             }
 
-            public static double triangleArea(double a, double b, double c) {
-                return (a+b+c)/2*((a+b+c)/2-a)*((a+b+c)/2-b)*((a+b+c)/2-c);
-            }
 
+     public double Perimeter() {
+         return  this.a + this.b + this.c;
+     }
 
+     public double Area() {
+         return (this.a + this.b + this.c)/2*((this.a + this.b + this.c)/2-a)*((this.a + this.b + this.c)/2-b)*((this.a + this.b + this.c)/2-c);
+     }
  }
