@@ -31,6 +31,6 @@ package ru.stqa.qeometry.figures;
      }
 
      public double Area() {
-         return (this.a + this.b + this.c)/2*((this.a + this.b + this.c)/2-a)*((this.a + this.b + this.c)/2-b)*((this.a + this.b + this.c)/2-c);
+         return (Perimeter()/2*(Perimeter()/2-a)*(Perimeter()/2-b)*(Perimeter()/2-c));
      }
  }
