@@ -2,7 +2,6 @@ package tests;
 
 import manager.ApplicationManager;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
 
 public class TestBase {
 
@@ -16,7 +15,4 @@ public class TestBase {
         app.init();
     }
 
-    protected boolean isGroupPresent() {
-        return app.isElementPresent(By.name("selected[]"));
-    }
 }
