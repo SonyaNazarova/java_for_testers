@@ -3,6 +3,8 @@ package tests;
 import manager.ApplicationManager;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.awt.*;
+
 public class TestBase {
 
     protected static ApplicationManager app;
@@ -12,7 +14,7 @@ public class TestBase {
         if (app == null){
             app = new ApplicationManager();
         }
-        app.init();
+        app.init(System.getProperty("browser", "firefox"));
     }
 
 }
