@@ -40,4 +40,34 @@ public class ContactHelper extends HelperBase {
     }
 
 
+    public boolean isContactPresent() {
+        openHomePage();
+        return manager.isElementPresent(By.name("selected[]"));
+    }
+
+    private void openHomePage() {
+        click(By.linkText("home"));
+    }
+
+    public void removeContact() {
+        openHomePage();
+        selectContact();
+        removeSelectedContact();
+        returnToHomePage();
+    }
+
+    private void returnToHomePage() {
+        click(By.linkText("home page"));
+    }
+
+    private void removeSelectedContact() {
+        click(By.name("delete"));
+    }
+
+    private void selectContact() {
+        click(By.name("selected[]"));
+    }
+
+
+
 }
