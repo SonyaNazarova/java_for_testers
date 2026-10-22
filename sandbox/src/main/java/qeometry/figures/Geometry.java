@@ -1,8 +1,8 @@
-package ru.stqa.qeometry;
+package qeometry.figures;
 
-import ru.stqa.qeometry.figures.Rectangle;
-import ru.stqa.qeometry.figures.Square;
-import ru.stqa.qeometry.figures.Triangle;
+import ru.stqa.Rectangle;
+import ru.stqa.Square;
+import ru.stqa.Triangle;
 
 public class Geometry {
     public static void main(String[] args) {

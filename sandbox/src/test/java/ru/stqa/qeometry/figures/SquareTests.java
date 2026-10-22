@@ -2,6 +2,7 @@ package ru.stqa.qeometry.figures;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.stqa.Square;
 
 public class SquareTests {
     @Test

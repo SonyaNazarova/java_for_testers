@@ -1,4 +1,4 @@
-package ru.stqa.qeometry.figures;
+package ru.stqa;
 
 public record Square (double side){
 

@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.stqa.qeometry.figures.Rectangle;
-import ru.stqa.qeometry.figures.Square;
+import ru.stqa.Rectangle;
 
 public class RectangleTests {
     @Test
