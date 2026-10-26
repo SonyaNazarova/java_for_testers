@@ -40,10 +40,6 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public boolean isContactPresent() {
-        openHomePage();
-        return manager.isElementPresent(By.name("selected[]"));
-    }
 
     private void openHomePage() {
         click(By.linkText("home"));
@@ -68,6 +64,9 @@ public class ContactHelper extends HelperBase {
         click(By.name("selected[]"));
     }
 
-
+    public int getCount() {
+        openHomePage();
+        return  manager.driver.findElements(By.name("selected[]")).size();
+    }
 
 }
