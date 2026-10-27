@@ -68,5 +68,13 @@ public class ContactHelper extends HelperBase {
         openHomePage();
         return  manager.driver.findElements(By.name("selected[]")).size();
     }
+    public void removeAllContacts() {
+        openHomePage();
+        selectAllContacts();
+        removeSelectedContact();
+    }
 
+    private void selectAllContacts() {
+        click(By.id("MassCB"));
+    }
 }
