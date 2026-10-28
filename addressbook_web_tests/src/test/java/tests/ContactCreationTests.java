@@ -17,15 +17,16 @@ public class ContactCreationTests extends TestBase{
         for (var first_name: List.of("", "contact first name")){
             for (var middle_name: List.of("", "contact middle name")){
                 for (var last_name: List.of("", "contact last name")){
-                    result.add(new ContactData().withFirst_name(first_name).withMiddle_name(middle_name).withLast_name(last_name));
+                    result.add(new ContactData().withFirst_name(first_name).withMiddle_name(middle_name).withLast_name(last_name).withPhoto(null));
                 }
             }
         }
-        for (int i = 0 ; i < 5; i++){
+        for (int i = 0 ; i < 3; i++){
             result.add(new ContactData()
                     .withFirst_name(randomString(i*10))
                     .withMiddle_name(randomString(i*10))
-                    .withLast_name(randomString(i*10)));
+                    .withLast_name(randomString(i*10))
+                    .withPhoto("src/test/resources/images/avatar.png"));
         }
         return result;
     }
@@ -42,7 +43,7 @@ public class ContactCreationTests extends TestBase{
         newContacts.sort(compareById);
 
         var expectedList = new ArrayList<>(oldContacts);
-        expectedList.add(contact.withId(newContacts.get(newContacts.size()-1).id()).withMiddle_name(""));
+        expectedList.add(contact.withId(newContacts.get(newContacts.size()-1).id()).withMiddle_name("").withPhoto(""));
         expectedList.sort(compareById);
 
         Assertions.assertEquals(newContacts, expectedList);

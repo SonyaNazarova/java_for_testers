@@ -55,6 +55,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contact.first_name());
         type(By.name("middlename"),  contact.middle_name());
         type(By.name("lastname"),  contact.last_name());
+        attach(By.name("photo"), contact.photo());
     }
 
 
