@@ -1,7 +1,7 @@
 package manager;
 
 import model.ContactData;
-import model.GroupData;
+
 import org.openqa.selenium.By;
 
 import java.util.ArrayList;
@@ -19,7 +19,28 @@ public class ContactHelper extends HelperBase {
         fillContactForm(contact);
         submitContactCreation();
         returnToContactsPage();
+
     }
+
+
+    public void modifyContact(ContactData contact,ContactData modifiedContact) {
+        openHomePage();
+        selectContact(contact);
+        initContactModification(contact);
+        fillContactForm(modifiedContact);
+        submitContactModification();
+        returnToHomePage();
+    }
+
+    private void submitContactModification() {
+        click(By.name("update"));
+    }
+
+    private void initContactModification(ContactData contact) {
+
+        click(By.xpath(String.format("//tr[td/input[@id='%s']]//img[@alt='Edit']", contact.id())));
+    }
+
 
     private void returnToContactsPage()  {
         click(By.linkText("add next"));
@@ -57,7 +78,9 @@ public class ContactHelper extends HelperBase {
     }
 
     private void returnToHomePage() {
+
         click(By.linkText("home page"));
+
     }
 
     private void removeSelectedContact() {
@@ -65,7 +88,7 @@ public class ContactHelper extends HelperBase {
     }
 
     private void selectContact(ContactData contact) {
-        click(By.cssSelector(String.format("input[value='%s']", contact.id())));
+        click(By.cssSelector(String.format("input[id='%s']", contact.id())));
     }
 
     public int getCount() {
@@ -87,11 +110,11 @@ public class ContactHelper extends HelperBase {
         var contacts = new ArrayList<ContactData>();
         var lines = manager.driver.findElements(By.cssSelector("tr:has(input[name='selected[]'])"));
         for (var line : lines) {
-            var first_name = line.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var first_name = line.findElement(By.xpath("./td[3]")).getText();
             var checkbox = line.findElement(By.name("selected[]"));
-            var last_name = line.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            var last_name = line.findElement(By.xpath("./td[2]")).getText();
             var id = checkbox.getAttribute("id");
-            contacts.add(new ContactData().withId(id).withFirst_name(first_name).withMiddle_name("").withLast_name(last_name));
+            contacts.add(new ContactData().withId(id).withFirst_name(first_name).withLast_name(last_name));
 
         }
         return contacts;
