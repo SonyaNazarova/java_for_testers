@@ -26,7 +26,7 @@ public class ContactCreationTests extends TestBase{
                     .withFirst_name(randomString(i*10))
                     .withMiddle_name(randomString(i*10))
                     .withLast_name(randomString(i*10))
-                    .withPhoto("src/test/resources/images/avatar.png"));
+                    .withPhoto(randomFile("src/test/resources/images")));
         }
         return result;
     }
