@@ -1,11 +1,16 @@
 package tests;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import common.CommonFunctions;
 import model.ContactData;
+import model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -13,22 +18,25 @@ import java.util.List;
 public class ContactCreationTests extends TestBase{
 
 
-    public static List<ContactData> contactProvider() {
+    public static List<ContactData> contactProvider() throws IOException {
         var result = new ArrayList<ContactData>();
-        for (var first_name: List.of("", "contact first name")){
-            for (var middle_name: List.of("", "contact middle name")){
-                for (var last_name: List.of("", "contact last name")){
-                    result.add(new ContactData().withFirst_name(first_name).withMiddle_name(middle_name).withLast_name(last_name).withPhoto(null));
-                }
-            }
-        }
-        for (int i = 0 ; i < 3; i++){
-            result.add(new ContactData()
-                    .withFirst_name(CommonFunctions.randomString(i*10))
-                    .withMiddle_name(CommonFunctions.randomString(i*10))
-                    .withLast_name(CommonFunctions.randomString(i*10))
-                    .withPhoto(randomFile("src/test/resources/images")));
-        }
+        //for (var first_name: List.of("", "contact first name")){
+        //  for (var middle_name: List.of("", "contact middle name")){
+        //      for (var last_name: List.of("", "contact last name")){
+        //          result.add(new ContactData().withFirst_name(first_name).withMiddle_name(middle_name).withLast_name(last_name).withPhoto(null));
+        //      }
+        //   }
+        // }
+        // for (int i = 0 ; i < 3; i++){
+        //    result.add(new ContactData()
+        //           .withFirst_name(CommonFunctions.randomString(i*10))
+        //          .withMiddle_name(CommonFunctions.randomString(i*10))
+        //          .withLast_name(CommonFunctions.randomString(i*10))
+        //          .withPhoto(randomFile("src/test/resources/images")));
+        // }
+        var mapper = new XmlMapper();
+        var value = mapper.readValue(new File("contacts.xml"),new TypeReference<List<ContactData>>(){});
+        result.addAll(value);
         return result;
     }
 
