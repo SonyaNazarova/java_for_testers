@@ -17,6 +17,7 @@ public class ApplicationManager {
     private GroupHelper groups;
     private ContactHelper contacts;
     private Properties properties;
+    private JdbcHelper jdbc;
 
 
 
@@ -69,6 +70,13 @@ public class ApplicationManager {
             contacts = new ContactHelper(this);
         }
         return contacts;
+    }
+
+    public JdbcHelper jdbc() {
+        if (jdbc == null) {
+            jdbc = new JdbcHelper(this);
+        }
+        return jdbc;
     }
 }
 
