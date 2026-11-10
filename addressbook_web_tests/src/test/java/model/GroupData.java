@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Objects;
+
 public record GroupData(String id, String name, String header, String footer) {
-    public GroupData(){
-        this ("", "", "", "");
+
+    public GroupData() {
+        this("", "", "", "");
     }
 
     public GroupData withId(String id) {
@@ -21,5 +24,15 @@ public record GroupData(String id, String name, String header, String footer) {
     public GroupData withFooter(String footer) {
         return new GroupData(this.id, this.name, this.header, footer);
     }
+
+    @Override
+    public String toString() {
+        return "GroupData[" +
+                "id=" + id + ", " +
+                "name=" + name + ", " +
+                "header=" + header + ", " +
+                "footer=" + footer + ']';
+    }
+
 
 }
