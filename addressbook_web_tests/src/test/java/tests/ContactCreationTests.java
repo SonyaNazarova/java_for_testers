@@ -6,6 +6,7 @@ import common.CommonFunctions;
 import model.ContactData;
 import model.GroupData;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -57,6 +58,27 @@ public class ContactCreationTests extends TestBase{
 
         Assertions.assertEquals(newContacts, expectedList);
     }
+
+
+    @Test
+    void canCreateContactInGroup (){
+        var contact = new ContactData()
+                .withFirst_name(CommonFunctions.randomString(10))
+                .withMiddle_name(CommonFunctions.randomString(10))
+                .withLast_name(CommonFunctions.randomString(10))
+                .withPhoto(randomFile("src/test/resources/images"));
+        if (app.hbm().getGroupCount() == 0) {
+            app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
+        }
+        var group = app.hbm().getGroupList().get(0);
+
+        var oldRelated = app.hbm().getContactsInGroup(group);
+        app.contacts().create(contact, group);
+        var newRelated = app.hbm().getContactsInGroup(group);
+        Assertions.assertEquals(oldRelated.size()+1, newRelated.size());
+    }
+
+
 
 
 }
