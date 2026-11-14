@@ -41,7 +41,10 @@ public class HibernateHelper extends HelperBase {
         return new ContactData().withId(""+ record.id)
                 .withFirst_name(record.firstname)
                 .withMiddle_name(record.middlename)
-                .withLast_name(record.lastname);
+                .withLast_name(record.lastname)
+                .withHome(record.home)
+                .withMobile(record.mobile)
+                .withWork(record.work);
     }
 
     private static ContactRecord convert(ContactData data) {

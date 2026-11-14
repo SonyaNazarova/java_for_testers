@@ -27,7 +27,7 @@ public class ContactHelper extends HelperBase {
     public void create(ContactData contact, GroupData group) {
         openContactsPage();
         fillContactForm(contact);
-        selectGroup (group);
+        selectGroup(group);
         submitContactCreation();
         returnToContactsPage();
 
@@ -38,7 +38,7 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    public void modifyContact(ContactData contact,ContactData modifiedContact) {
+    public void modifyContact(ContactData contact, ContactData modifiedContact) {
         openHomePage();
         selectContact(contact);
         initContactModification(contact);
@@ -57,7 +57,7 @@ public class ContactHelper extends HelperBase {
     }
 
 
-    private void returnToContactsPage()  {
+    private void returnToContactsPage() {
         click(By.linkText("add next"));
 
     }
@@ -68,8 +68,8 @@ public class ContactHelper extends HelperBase {
 
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.first_name());
-        type(By.name("middlename"),  contact.middle_name());
-        type(By.name("lastname"),  contact.last_name());
+        type(By.name("middlename"), contact.middle_name());
+        type(By.name("lastname"), contact.last_name());
         attach(By.name("photo"), contact.photo());
     }
 
@@ -79,7 +79,6 @@ public class ContactHelper extends HelperBase {
             click(By.linkText("add new"));
         }
     }
-
 
 
     private void openHomePage() {
@@ -109,8 +108,9 @@ public class ContactHelper extends HelperBase {
 
     public int getCount() {
         openHomePage();
-        return  manager.driver.findElements(By.name("selected[]")).size();
+        return manager.driver.findElements(By.name("selected[]")).size();
     }
+
     public void removeAllContacts() {
         openHomePage();
         selectAllContacts();
@@ -176,4 +176,10 @@ public class ContactHelper extends HelperBase {
     private void selectGroupFilter(GroupData group) {
         new Select(manager.driver.findElement(By.name("group"))).selectByValue(group.id());
     }
+
+    public String getPhones(ContactData contact) {
+        return manager.driver.findElement(By.xpath(
+                String.format("//input[@id='%s']/../../td[6]", contact.id()))).getText();
+    }
+
 }

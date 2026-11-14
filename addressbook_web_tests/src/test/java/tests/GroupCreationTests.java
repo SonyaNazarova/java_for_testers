@@ -73,7 +73,7 @@ public class GroupCreationTests extends TestBase {
 
         var extraGroups = newGroups.stream().filter(g -> ! oldGroups.contains(g)).toList();
         var newId = extraGroups.get(0).id();
-        
+
         var expectedList = new ArrayList<>(oldGroups);
         expectedList.add(group.withId(newId));
         Assertions.assertEquals(Set.copyOf(newGroups), Set.copyOf(expectedList));

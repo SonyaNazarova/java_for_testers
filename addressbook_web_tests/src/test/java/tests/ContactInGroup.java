@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Random;
 
 public class ContactInGroup extends TestBase{
     @Test
     public void addContactInGroup() {
         if (app.hbm().getContactCount() == 0) {
-            app.hbm().createContact(new ContactData("", "contact first name", "contact middle name", "contact last name", "src/test/resources/images/avatar.png"));
+            app.hbm().createContact(new ContactData("", "contact first name", "contact middle name", "contact last name", "src/test/resources/images/avatar.png", "", "", ""));
         }
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
@@ -24,7 +23,7 @@ public class ContactInGroup extends TestBase{
         var allContacts = app.hbm().getContactList();
         allContacts.removeAll(oldRelated);
         if (allContacts.isEmpty()) {
-            app.hbm().createContact(new ContactData("", "first", "middle", "last", "src/test/resources/images/avatar.png"));
+            app.hbm().createContact(new ContactData("", "first", "middle", "last", "src/test/resources/images/avatar.png", "", "", ""));
             allContacts = app.hbm().getContactList();
             allContacts.removeAll(oldRelated);
         }
@@ -46,7 +45,7 @@ public class ContactInGroup extends TestBase{
     @Test
     public void removeContactFromGroup() {
         if (app.hbm().getContactCount() == 0) {
-            app.hbm().createContact(new ContactData("", "contact first name", "contact middle name", "contact last name", "src/test/resources/images/avatar.png"));
+            app.hbm().createContact(new ContactData("", "contact first name", "contact middle name", "contact last name", "src/test/resources/images/avatar.png", "", "", ""));
         }
         if (app.hbm().getGroupCount() == 0) {
             app.hbm().createGroup(new GroupData("", "group name", "group header", "group footer"));
