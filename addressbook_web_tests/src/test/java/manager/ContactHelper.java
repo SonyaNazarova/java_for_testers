@@ -5,8 +5,11 @@ import model.ContactData;
 import model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -74,6 +77,16 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contact.middle_name());
         type(By.name("lastname"), contact.last_name());
         attach(By.name("photo"), contact.photo());
+        type(By.name("home"), contact.home());
+        type(By.name("mobile"), contact.mobile());
+        type(By.name("work"), contact.work());
+        type(By.name("address"), contact.address());
+        type(By.name("email"), contact.email());
+        type(By.name("email2"), contact.email2());
+        type(By.name("email3"), contact.email3());
+
+
+
     }
 
 
@@ -95,9 +108,15 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    private void returnToHomePage() {
+    public void returnToHomePage() {
 
         click(By.linkText("home page"));
+
+    }
+
+    public void homePage() {
+
+        click(By.cssSelector("a[href='./']"));
 
     }
 
@@ -192,6 +211,28 @@ public class ContactHelper extends HelperBase {
             var id = row.findElement(By.tagName("input")).getAttribute("id");
             var phones = row.findElements(By.tagName("td")).get(5).getText();
             result.put(id, phones);
+        }
+        return result;
+    }
+
+    public Map<String, String> getAddress() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row: rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var address = row.findElements(By.tagName("td")).get(3).getText();
+            result.put(id, address);
+        }
+        return result;
+    }
+
+    public Map<String, String> getEmails() {
+        var result = new HashMap<String, String>();
+        List<WebElement> rows = manager.driver.findElements(By.name("entry"));
+        for (WebElement row: rows) {
+            var id = row.findElement(By.tagName("input")).getAttribute("id");
+            var emails = row.findElements(By.tagName("td")).get(4).getText();
+            result.put(id, emails);
         }
         return result;
     }

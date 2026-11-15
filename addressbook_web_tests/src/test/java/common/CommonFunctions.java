@@ -17,4 +17,16 @@ public class CommonFunctions {
                 .collect(Collectors.joining());
         return  result;
     }
+
+    public static String randomNumberString(int n) {
+        var rnd = new Random();
+        Supplier<Integer> randomNumbers = () -> rnd.nextInt(10);
+        var result = Stream.generate(randomNumbers)
+                .limit(n)
+                .map(i -> '0' + i)
+                .map(Character::toString)
+                .collect(Collectors.joining());
+        return result;
+    }
 }
+

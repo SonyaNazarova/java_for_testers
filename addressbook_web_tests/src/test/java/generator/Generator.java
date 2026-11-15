@@ -80,7 +80,15 @@ public class Generator {
                 .withFirst_name(CommonFunctions.randomString( 10))
                 .withMiddle_name(CommonFunctions.randomString( 10))
                 .withLast_name(CommonFunctions.randomString( 10))
-                .withPhoto(randomFile("src/test/resources/images")));
+                .withPhoto("src/test/resources/images/avatar.png")
+                .withHome(CommonFunctions.randomNumberString(10))
+                .withMobile(CommonFunctions.randomNumberString(10))
+                .withWork(CommonFunctions.randomNumberString(10))
+                .withAddress(CommonFunctions.randomString(10))
+                .withEmail(CommonFunctions.randomString(10))
+                .withEmail2(CommonFunctions.randomString(10))
+                .withEmail3(CommonFunctions.randomString(10))
+        );
     }
 
     private void save(Object data) throws IOException {
