@@ -18,9 +18,9 @@ public class ApplicationManager {
     private JamesCliHelper jamesCliHelper;
     private MailHelper mailHelper;
     private RegistrationHelper registrationHelper;
-    private JamesApiHelper jamesApiHelper
-            ;
+    private JamesApiHelper jamesApiHelper;
     private RestApiHelper restApiHelper;
+    private SoapApiHelper soapApiHelper;
 
 
     public void init(String browser, Properties properties) {
@@ -48,35 +48,35 @@ public class ApplicationManager {
     }
 
     public SessionHelper session() {
-        if (sessionHelper == null){
+        if (sessionHelper == null) {
             sessionHelper = new SessionHelper(this);
         }
         return sessionHelper;
     }
 
     public HttpSessionHelper http() {
-        if (httpSessionHelper == null){
+        if (httpSessionHelper == null) {
             httpSessionHelper = new HttpSessionHelper(this);
         }
         return httpSessionHelper;
     }
 
     public JamesCliHelper jamesCli() {
-        if (jamesCliHelper == null){
+        if (jamesCliHelper == null) {
             jamesCliHelper = new JamesCliHelper(this);
         }
         return jamesCliHelper;
     }
 
     public JamesApiHelper jamesApi() {
-        if (jamesApiHelper == null){
+        if (jamesApiHelper == null) {
             jamesApiHelper = new JamesApiHelper(this);
         }
         return jamesApiHelper;
     }
 
     public MailHelper mail() {
-        if (mailHelper == null){
+        if (mailHelper == null) {
             mailHelper = new MailHelper(this);
         }
         return mailHelper;
@@ -89,7 +89,7 @@ public class ApplicationManager {
         return registrationHelper;
     }
 
-    public String property(String name){
+    public String property(String name) {
         return properties.getProperty(name);
     }
 
@@ -98,5 +98,12 @@ public class ApplicationManager {
             restApiHelper = new RestApiHelper(this);
         }
         return restApiHelper;
+    }
+
+    public SoapApiHelper soap() {
+        if (soapApiHelper == null) {
+            soapApiHelper = new SoapApiHelper(this);
+        }
+        return soapApiHelper;
     }
 }
