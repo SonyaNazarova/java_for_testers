@@ -36,11 +36,11 @@ public class UserRegistrationTests extends  TestBase{
 
     @ParameterizedTest
     @MethodSource("randomUser")
-    void сanRegisterUser2(String user){
+    void canRegisterUserApi(String user){
         var email = String.format("%s@localhost", user);
         var password = "password";
         app.jamesApi().addUser(email, password);
-        app.registration().start(user,email);
+        app.rest().createUser(user, email);
 
         var messages = app.mail().receive(email, password, Duration.ofSeconds(60));
         var text = messages.get(0).content();
